@@ -1,0 +1,60 @@
+{
+  "name": "react-grid-divider",
+  "version": "1.0.0",
+  "description": "A flexible React grid system with visual dividers for Tailwind CSS v4",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": "./dist/styles/grid-utilities.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && pnpm run copy-styles",
+    "copy-styles": "mkdir -p dist/styles && cp src/styles/grid-utilities.css dist/styles/",
+    "prepublishOnly": "pnpm run build",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "react",
+    "grid",
+    "divider",
+    "tailwind",
+    "tailwindcss",
+    "css-grid",
+    "layout",
+    "ui",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/operezol/react-grid-divider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/operezol/react-grid-divider/issues"
+  },
+  "homepage": "https://github.com/operezol/react-grid-divider#readme",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "dependencies": {
+    "tailwind-merge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
