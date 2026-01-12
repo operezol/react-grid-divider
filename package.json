@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "tsc && pnpm run copy-styles",
-    "copy-styles": "mkdir -p dist/styles && cp src/styles/grid-utilities.css dist/styles/",
+    "copy-styles": "node -e \"const fs=require('fs');const path=require('path');const dir=path.join('dist','styles');if(!fs.existsSync(dir))fs.mkdirSync(dir,{recursive:true});fs.copyFileSync(path.join('src','styles','grid-utilities.css'),path.join(dir,'grid-utilities.css'))\"",
     "prepublishOnly": "pnpm run build",
     "test": "echo \"No tests yet\" && exit 0"
   },
@@ -49,12 +49,12 @@
     "tailwindcss": "^4.0.0"
   },
   "dependencies": {
-    "tailwind-merge": "^3.0.1"
+    "tailwind-merge": "3.4.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.0"
+    "@types/react": "19.2.8",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
   },
   "packageManager": "pnpm@9.0.0"
 }
