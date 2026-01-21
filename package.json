@@ -1,14 +1,16 @@
 {
   "name": "react-grid-divider",
   "version": "1.0.0",
-  "description": "A flexible React grid system with visual dividers for Tailwind CSS v4",
+  "description": "A flexible React grid system with visual dividers for Tailwind CSS",
   "type": "module",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/styles/grid-utilities.css"
   },
@@ -18,8 +20,11 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc && pnpm run copy-styles",
-    "copy-styles": "node -e \"const fs=require('fs');const path=require('path');const dir=path.join('dist','styles');if(!fs.existsSync(dir))fs.mkdirSync(dir,{recursive:true});fs.copyFileSync(path.join('src','styles','grid-utilities.css'),path.join(dir,'grid-utilities.css'))\"",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
     "prepublishOnly": "pnpm run build",
     "test": "echo \"No tests yet\" && exit 0"
   },
@@ -52,9 +57,16 @@
     "tailwind-merge": "3.4.0"
   },
   "devDependencies": {
-    "@types/react": "19.2.8",
-    "@types/react-dom": "19.2.3",
-    "typescript": "5.9.3"
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.20.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@10.14.0"
 }
